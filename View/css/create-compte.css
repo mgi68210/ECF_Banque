@@ -1,0 +1,54 @@
+/* Centrage vertical et horizontal */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.create-compte-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Prend en compte le header */
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Formulaire stylé */
+.create-compte-form {
+    width: 100%;
+    max-width: 750px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre */
+.create-compte-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Champs */
+.create-compte-form .form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.create-compte-form input,
+.create-compte-form select {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Bouton */
+.create-compte-form button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 16px;
+}

@@ -1,0 +1,77 @@
+/* CENTRAGE DE LA PAGE */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.login-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* TITRE */
+.login-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* FORMULAIRE */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.input-error {
+    font-size: 0.85rem;
+    color: #DB2727;
+    margin-top: 5px;
+}
+
+.error-message {
+    color: white;
+    background-color: #DB2727;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* BOUTON */
+.btn-primary-custom {
+    width: 100%;
+    padding: 12px;
+    background-color: #057858;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background-color: #046a4c;
+}

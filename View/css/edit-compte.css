@@ -1,0 +1,48 @@
+/* Centrage et structure */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.edit-compte-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 30px 0;
+}
+
+/* Style du formulaire */
+.edit-compte-form {
+    width: 100%;
+    max-width: 750px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.edit-compte-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.edit-compte-form label {
+    font-weight: bold;
+}
+
+.edit-compte-form input,
+.edit-compte-form select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.edit-compte-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+}

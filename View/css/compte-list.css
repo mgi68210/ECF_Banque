@@ -1,0 +1,54 @@
+.compte-list-container {
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 12px;
+    max-width: 1000px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.compte-list-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.compte-table {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.compte-table th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.compte-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-sm {
+    margin-right: 5px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+}
+
+@media (max-width: 768px) {
+    .compte-list-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .compte-list-title {
+        font-size: 22px;
+    }
+
+    .btn-sm {
+        margin-bottom: 5px;
+    }
+}

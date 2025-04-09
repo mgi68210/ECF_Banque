@@ -1,0 +1,48 @@
+/* Centrage de la page */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.edit-client-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Style du formulaire */
+.edit-client-form {
+    width: 100%;
+    max-width: 750px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.edit-client-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.edit-client-form label {
+    font-weight: bold;
+}
+
+.edit-client-form input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.edit-client-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+}

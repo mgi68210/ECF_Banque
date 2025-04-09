@@ -1,0 +1,126 @@
+<?php
+require_once __DIR__ . '/../Compte.php';
+require_once __DIR__ . '/../../Lib/Database.php';
+
+
+class CompteRepository
+{
+    private DatabaseConnection $connection;
+
+    public function __construct()
+    {
+        $this->connection = new DatabaseConnection();
+    }
+
+    // Récupérer tous les comptes avec le nom du client
+    public function getComptes(): array
+    {
+        $statement = $this->connection->getConnection()->prepare("
+            SELECT c.*, u.nom, u.prenom
+            FROM Compte_Bancaire c
+            JOIN Utilisateur u ON u.id_utilisateur = c.id_utilisateur
+        ");
+        $statement->execute();
+
+        $comptes = [];
+        foreach ($statement as $row) {
+            $compte = new Compte();
+            $compte->setIdCompte($row['id_compte']);
+            $compte->setRib($row['rib']);
+            $compte->setTypeCompte($row['type_compte']);
+            $compte->setSoldeInitial($row['solde_initial']);
+            $compte->setIdUtilisateur($row['id_utilisateur']);
+
+            // Ajouter les données du client
+            $compte->client_nom = $row['nom'];
+            $compte->client_prenom = $row['prenom'];
+
+            $comptes[] = $compte;
+        }
+
+        return $comptes;
+    }
+
+    public function getCompte(int $id): ?Compte
+    {
+        $statement = $this->connection->getConnection()->prepare("SELECT * FROM Compte_Bancaire WHERE id_compte = :id");
+        $statement->execute(['id' => $id]);
+        $result = $statement->fetch();
+
+        if (!$result) {
+            return null;
+        }
+
+        $compte = new Compte();
+        $compte->setIdCompte($result['id_compte']);
+        $compte->setRib($result['rib']);
+        $compte->setTypeCompte($result['type_compte']);
+        $compte->setSoldeInitial($result['solde_initial']);
+        $compte->setIdUtilisateur($result['id_utilisateur']);
+
+        return $compte;
+    }
+
+    public function getComptesByUserId(int $id_utilisateur): array
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            "SELECT * FROM Compte_Bancaire WHERE id_utilisateur = :id_utilisateur"
+        );
+        $statement->execute(['id_utilisateur' => $id_utilisateur]);
+
+        $comptes = [];
+        foreach ($statement as $row) {
+            $compte = new Compte();
+            $compte->setIdCompte($row['id_compte']);
+            $compte->setRib($row['rib']);
+            $compte->setTypeCompte($row['type_compte']);
+            $compte->setSoldeInitial($row['solde_initial']);
+            $compte->setIdUtilisateur($row['id_utilisateur']);
+
+            $comptes[] = $compte;
+        }
+
+        return $comptes;
+    }
+
+    public function createC(Compte $compte): bool
+    {
+        $statement = $this->connection
+            ->getConnection()
+            ->prepare('INSERT INTO Compte_Bancaire (rib, type_compte, solde_initial, id_utilisateur) 
+                       VALUES (:rib, :type_compte, :solde_initial, :id_utilisateur)');
+
+        return $statement->execute([
+            'rib'           => $compte->getRib(),
+            'type_compte'   => $compte->getTypeCompte(),
+            'solde_initial' => $compte->getSoldeInitial(),
+            'id_utilisateur'=> $compte->getIdUtilisateur()
+        ]);
+    }
+
+    public function updateC(Compte $compte): bool
+    {
+        $statement = $this->connection
+            ->getConnection()
+            ->prepare('UPDATE Compte_Bancaire SET rib = :rib, type_compte = :type_compte, solde_initial = :solde_initial, 
+                       id_utilisateur = :id_utilisateur WHERE id_compte = :id_compte');
+
+        return $statement->execute([
+            'id_compte'     => $compte->getIdCompte(),
+            'rib'           => $compte->getRib(),
+            'type_compte'   => $compte->getTypeCompte(),
+            'solde_initial' => $compte->getSoldeInitial(),
+            'id_utilisateur'=> $compte->getIdUtilisateur()
+        ]);
+    }
+
+    public function deleteC(int $id): bool
+    {
+        $statement = $this->connection
+            ->getConnection()
+            ->prepare('DELETE FROM Compte_Bancaire WHERE id_compte = :id');
+        $statement->bindParam(':id', $id);
+
+        return $statement->execute();
+    }
+}

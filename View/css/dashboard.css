@@ -1,0 +1,87 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Titre principal */
+.dashboard-container h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Section des cartes */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* Style des cartes */
+.dashboard-card {
+    flex: 1 1 250px;
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Couleurs par type */
+.card-client {
+    border-left: 6px solid #0d6efd;
+}
+
+.card-compte {
+    border-left: 6px solid #198754;
+}
+
+.card-contrat {
+    border-left: 6px solid #6c757d;
+}
+
+/* Titres */
+.dashboard-card h4 {
+    font-size: 1.1rem;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* Valeur principale */
+.dashboard-card .count {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #212529;
+}
+
+/* Lien */
+.dashboard-card a {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-card {
+        flex: 1 1 100%;
+    }
+}
