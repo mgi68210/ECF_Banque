@@ -1,0 +1,76 @@
+/* Conteneur principal de la liste des contrats */
+.contrat-list-container {
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 12px;
+    max-width: 1000px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Titre principal */
+.contrat-list-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style général du tableau */
+.contrat-table {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+/* En-têtes du tableau */
+.contrat-table th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+}
+
+/* Cellules de données */
+.contrat-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+/* Boutons d'action */
+.btn-sm {
+    margin-right: 5px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+}
+
+/* Bouton d'ajout */
+.btn-ajouter {
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .contrat-list-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .contrat-list-title {
+        font-size: 22px;
+    }
+
+    .btn-sm {
+        margin-bottom: 5px;
+    }
+
+    .contrat-table th, .contrat-table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
