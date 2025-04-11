@@ -1,46 +1,122 @@
-
+/* Container principal */
 .user-home {
-    max-width: 700px;
-    margin: 100px auto;
+    max-width: 950px;
+    margin: 40px auto;
     padding: 40px;
-    background-color: #f9f9f9;
-    text-align: center;
-    border: 2px solid #0d6efd;
+    background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(13, 110, 253, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    animation: zoomIn 0.4s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Titre principal */
 .user-home h2 {
-    font-size: 2rem;
-    color: #0d6efd;
-    margin-bottom: 20px;
+    color: #0f3772;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
+/* Sous-texte */
 .user-home p {
-    font-size: 1.1rem;
-    color: #444;
-}
-
-.user-note {
-    margin-top: 20px;
-    background-color: #e9ecef;
-    padding: 10px;
-    border-radius: 8px;
-    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
     color: #555;
 }
 
+/* Sections : infos, comptes, contrats */
+.user-info,
+.user-accounts,
+.user-contracts {
+    margin-top: 35px;
+}
+
+/* Titres de section */
+.user-info h4,
+.user-accounts h4,
+.user-contracts h4 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    color: #0d6efd;
+    border-bottom: 2px solid #dce3ea;
+    padding-bottom: 8px;
+}
+
+/* Liste infos perso */
+.user-info ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    line-height: 1.9;
+}
+
+.user-info li {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style des tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fdfdfd;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+/* Entêtes */
+th {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 14px;
+    text-align: left;
+}
+
+/* Cellules */
+td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+/* Texte d’absence de données */
+.text-muted {
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Bouton logout */
+.btn {
+    padding: 12px 26px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Animation zoom */
 @keyframes zoomIn {
-    0% {
-        transform: scale(0.8);
+    from {
+        transform: scale(0.95);
         opacity: 0;
     }
-    100% {
+    to {
         transform: scale(1);
         opacity: 1;
     }
-}
-
-.animate-zoom {
-    animation: zoomIn 0.5s ease-out;
 }

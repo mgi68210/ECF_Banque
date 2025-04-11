@@ -5,7 +5,7 @@ body, html {
     padding: 0;
 }
 
-.create-compte-container {
+.create-contrat-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ body, html {
 }
 
 /* Formulaire stylé */
-.create-compte-form {
+.create-contrat-form {
     width: 100%;
     max-width: 750px;
     background-color: #ffffff;
@@ -25,7 +25,7 @@ body, html {
 }
 
 /* Titre */
-.create-compte-form h2 {
+.create-contrat-form h2 {
     text-align: center;
     margin-bottom: 30px;
     color: #333;
@@ -33,22 +33,85 @@ body, html {
 }
 
 /* Champs */
-.create-compte-form .form-label {
+.create-contrat-form .form-label {
     font-weight: bold;
     color: #333;
 }
 
-.create-compte-form input,
-.create-compte-form select {
-    border-radius: 5px;
+.create-contrat-form input,
+.create-contrat-form select {
+    width: 100%;
     padding: 10px;
     font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+/* Apparence des menus déroulants */
+.create-contrat-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+}
+
+/* Focus visuel */
+.create-contrat-form input:focus,
+.create-contrat-form select:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+}
+
+/* Erreurs */
+.create-contrat-form .form-text.text-danger {
+    font-size: 0.9rem;
+    color: #DB2727;
+    margin-top: -5px;
+    margin-bottom: 10px;
 }
 
 /* Bouton */
-.create-compte-form button {
+.create-contrat-form button {
     width: 100%;
     margin-top: 15px;
     padding: 12px;
     font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    background-color: #198754;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.create-contrat-form button:hover {
+    background-color: #157347;
+}
+
+/* Lien retour */
+.create-contrat-form .btn-outline-secondary {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 2px solid #6c757d;
+    background-color: transparent;
+    color: #6c757d;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.create-contrat-form .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
 }

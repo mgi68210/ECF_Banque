@@ -73,3 +73,8 @@ ALTER TABLE utilisateur ADD COLUMN role ENUM('admin', 'user') DEFAULT 'user';
 
 ALTER TABLE utilisateur
 ADD COLUMN password VARCHAR(255) NULL;
+
+UPDATE Utilisateur
+SET password = '$2y$10$oJcHSo3IxqdRx1jG5Xf9QuS6gGWOq3mCYi5JlKKnksx63Qs8TGQWy'
+WHERE id_utilisateur IN (1, 2, 10, 15); 
+

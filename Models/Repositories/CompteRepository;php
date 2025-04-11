@@ -1,7 +1,7 @@
 <?php
+//  J'importe le modèle Compte et la connexion à la base
 require_once __DIR__ . '/../Compte.php';
 require_once __DIR__ . '/../../Lib/Database.php';
-
 
 class CompteRepository
 {
@@ -9,20 +9,27 @@ class CompteRepository
 
     public function __construct()
     {
+        // J’instancie la connexion à la base de données
         $this->connection = new DatabaseConnection();
     }
 
-    // Récupérer tous les comptes avec le nom du client
+    /**
+     * Je récupère tous les comptes avec le nom et prénom du client associé
+     */
     public function getComptes(): array
     {
-        $statement = $this->connection->getConnection()->prepare("
-            SELECT c.*, u.nom, u.prenom
+        $query = "
+            SELECT c.*, u.nom AS client_nom, u.prenom AS client_prenom
             FROM Compte_Bancaire c
-            JOIN Utilisateur u ON u.id_utilisateur = c.id_utilisateur
-        ");
+            JOIN Utilisateur u ON c.id_utilisateur = u.id_utilisateur
+        ";
+
+        $statement = $this->connection->getConnection()->prepare($query);
         $statement->execute();
 
         $comptes = [];
+
+        //  Pour chaque ligne trouvée, je crée un objet Compte
         foreach ($statement as $row) {
             $compte = new Compte();
             $compte->setIdCompte($row['id_compte']);
@@ -31,9 +38,9 @@ class CompteRepository
             $compte->setSoldeInitial($row['solde_initial']);
             $compte->setIdUtilisateur($row['id_utilisateur']);
 
-            // Ajouter les données du client
-            $compte->client_nom = $row['nom'];
-            $compte->client_prenom = $row['prenom'];
+            //  Je stocke aussi les infos du client (non présentes dans le modèle)
+            $compte->client_nom = $row['client_nom'];
+            $compte->client_prenom = $row['client_prenom'];
 
             $comptes[] = $compte;
         }
@@ -41,10 +48,16 @@ class CompteRepository
         return $comptes;
     }
 
+    /**
+     * Je récupère un compte par son identifiant unique
+     */
     public function getCompte(int $id): ?Compte
     {
-        $statement = $this->connection->getConnection()->prepare("SELECT * FROM Compte_Bancaire WHERE id_compte = :id");
+        $statement = $this->connection->getConnection()->prepare(
+            "SELECT * FROM Compte_Bancaire WHERE id_compte = :id"
+        );
         $statement->execute(['id' => $id]);
+
         $result = $statement->fetch();
 
         if (!$result) {
@@ -61,6 +74,9 @@ class CompteRepository
         return $compte;
     }
 
+    /**
+     * Je récupère tous les comptes associés à un utilisateur donné
+     */
     public function getComptesByUserId(int $id_utilisateur): array
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -69,6 +85,7 @@ class CompteRepository
         $statement->execute(['id_utilisateur' => $id_utilisateur]);
 
         $comptes = [];
+
         foreach ($statement as $row) {
             $compte = new Compte();
             $compte->setIdCompte($row['id_compte']);
@@ -83,44 +100,65 @@ class CompteRepository
         return $comptes;
     }
 
+    /**
+     * J'enregistre un nouveau compte bancaire dans la base
+     */
     public function createC(Compte $compte): bool
     {
-        $statement = $this->connection
-            ->getConnection()
-            ->prepare('INSERT INTO Compte_Bancaire (rib, type_compte, solde_initial, id_utilisateur) 
-                       VALUES (:rib, :type_compte, :solde_initial, :id_utilisateur)');
+        $statement = $this->connection->getConnection()->prepare(
+            'INSERT INTO Compte_Bancaire (rib, type_compte, solde_initial, id_utilisateur) 
+             VALUES (:rib, :type_compte, :solde_initial, :id_utilisateur)'
+        );
 
         return $statement->execute([
-            'rib'           => $compte->getRib(),
-            'type_compte'   => $compte->getTypeCompte(),
-            'solde_initial' => $compte->getSoldeInitial(),
-            'id_utilisateur'=> $compte->getIdUtilisateur()
+            'rib'            => $compte->getRib(),
+            'type_compte'    => $compte->getTypeCompte(),
+            'solde_initial'  => $compte->getSoldeInitial(),
+            'id_utilisateur' => $compte->getIdUtilisateur()
         ]);
     }
 
+    /**
+     * Je mets à jour un compte bancaire existant
+     */
     public function updateC(Compte $compte): bool
     {
-        $statement = $this->connection
-            ->getConnection()
-            ->prepare('UPDATE Compte_Bancaire SET rib = :rib, type_compte = :type_compte, solde_initial = :solde_initial, 
-                       id_utilisateur = :id_utilisateur WHERE id_compte = :id_compte');
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE Compte_Bancaire 
+             SET type_compte = :type_compte, solde_initial = :solde_initial 
+             WHERE id_compte = :id_compte'
+        );
 
         return $statement->execute([
             'id_compte'     => $compte->getIdCompte(),
-            'rib'           => $compte->getRib(),
             'type_compte'   => $compte->getTypeCompte(),
-            'solde_initial' => $compte->getSoldeInitial(),
-            'id_utilisateur'=> $compte->getIdUtilisateur()
+            'solde_initial' => $compte->getSoldeInitial()
         ]);
     }
 
+    /**
+     * Je supprime un compte bancaire via son ID
+     */
     public function deleteC(int $id): bool
     {
-        $statement = $this->connection
-            ->getConnection()
-            ->prepare('DELETE FROM Compte_Bancaire WHERE id_compte = :id');
+        $statement = $this->connection->getConnection()->prepare(
+            'DELETE FROM Compte_Bancaire WHERE id_compte = :id'
+        );
         $statement->bindParam(':id', $id);
 
         return $statement->execute();
+    }
+
+    /**
+     * Je vérifie si un utilisateur possède au moins un compte
+     */
+    public function userHasCompte(int $id_utilisateur): bool
+    {
+        $stmt = $this->connection->getConnection()->prepare(
+            "SELECT COUNT(*) FROM Compte_Bancaire WHERE id_utilisateur = :id"
+        );
+        $stmt->execute(['id' => $id_utilisateur]);
+
+        return $stmt->fetchColumn() > 0;
     }
 }

@@ -1,0 +1,46 @@
+.edit-contrat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 30px 0;
+}
+
+.edit-contrat-form {
+    width: 100%;
+    max-width: 750px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.edit-contrat-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.edit-contrat-form label {
+    font-weight: bold;
+}
+
+.edit-contrat-form input,
+.edit-contrat-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.edit-contrat-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.form-text.text-danger {
+    color: #db2727;
+    font-size: 0.9rem;
+}

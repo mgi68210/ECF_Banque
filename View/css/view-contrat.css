@@ -1,0 +1,49 @@
+.view-contrat-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 100px);
+    padding: 30px 20px;
+}
+
+.view-contrat-card {
+    width: 100%;
+    max-width: 750px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.view-contrat-card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #343a40;
+}
+
+.view-contrat-card table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+.view-contrat-card th,
+.view-contrat-card td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.view-contrat-card th {
+    background-color: #0f3772;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.view-contrat-card td {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.view-contrat-card .btn {
+    width: 48%;
+}

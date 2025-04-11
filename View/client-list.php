@@ -1,14 +1,18 @@
-<?php require_once __DIR__ . '/Template/Header.php'; ?>
-<link rel="stylesheet" href="View/css/client-list.css">
+<?php require_once __DIR__ . '/Template/Header.php'; ?> 
+<!-- J'inclus l'en-tête de la page (menu, styles globaux, etc.) -->
+
+<link rel="stylesheet" href="View/css/client-list.css"> 
+<!-- J'inclus la feuille de style spécifique à cette page -->
 
 <div class="client-list-container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="client-list-title mb-0">👥 Liste des utilisateurs</h2>
-        <a href="?action=utilisateur.create" class="btn btn-success">➕ Ajouter un client</a>
-    </div>
+    <h2 class="client-list-title">👥 Liste des utilisateurs</h2>
+    <!-- Titre principal de la page -->
 
-    <table class="table client-table">
+    <table class="client-table">
+        <!-- Je crée un tableau HTML pour afficher les utilisateurs -->
+
         <thead>
+            <!-- En-tête du tableau -->
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
@@ -16,28 +20,73 @@
                 <th>Email</th>
                 <th>Téléphone</th>
                 <th>Adresse</th>
-                <th>Actions</th>
+                <th>Actions</th> <!-- Colonne pour les boutons (voir, modifier, supprimer) -->
             </tr>
         </thead>
+
         <tbody>
+            <!-- Corps du tableau, qui va afficher chaque utilisateur -->
             <?php foreach ($users as $user): ?>
-            <tr>
-                <td><?= $user->getId() ?></td>
-                <td><?= $user->getNom() ?></td>
-                <td><?= $user->getPrenom() ?></td>
-                <td><?= $user->getEmail() ?></td>
-                <td><?= $user->getTelephone() ?></td>
-                <td><?= $user->getAdresse() ?></td>
-                <td>
-                    <a href="?action=utilisateur.show&id=<?= $user->getId() ?>" class="btn btn-info btn-sm">👁️</a>
-                    <a href="?action=utilisateur.edit&id=<?= $user->getId() ?>" class="btn btn-warning btn-sm">✏️</a>
-                    <a href="?action=utilisateur.delete&id=<?= $user->getId() ?>" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">❌</a>
-                </td>
-            </tr>
+                <!-- Je parcours tous les utilisateurs stockés dans la variable $users -->
+
+                <tr 
+                    data-id="<?= $user->getId() ?>" 
+                    data-has-comptes="<?= $user->hasCompte ? '1' : '0' ?>"
+                >
+                    <!-- Je crée une ligne de tableau pour chaque utilisateur.
+                         Les attributs "data-id" et "data-has-comptes" sont utilisés par JavaScript
+                         pour vérifier s’il a des comptes (utile pour empêcher la suppression par exemple) -->
+
+                    <td><?= $user->getId() ?></td>
+                    <!-- J'affiche l'ID de l'utilisateur -->
+
+                    <td><?= htmlspecialchars($user->getNom()) ?></td>
+                    <!-- J'affiche le nom. htmlspecialchars() protège contre les failles XSS -->
+
+                    <td><?= htmlspecialchars($user->getPrenom()) ?></td>
+                    <!-- J'affiche le prénom -->
+
+                    <td><?= htmlspecialchars($user->getEmail()) ?></td>
+                    <!-- J'affiche l'e-mail -->
+
+                    <td><?= htmlspecialchars($user->getTelephone()) ?></td>
+                    <!-- J'affiche le numéro de téléphone -->
+
+                    <td><?= htmlspecialchars($user->getAdresse()) ?></td>
+                    <!-- J'affiche l'adresse -->
+
+                    <td>
+                        <!-- Boutons d’action -->
+                        <a href="?action=utilisateur.show&id=<?= $user->getId() ?>" class="btn btn-info btn-sm mb-1">
+                            Voir
+                        </a>
+                        <!-- Redirige vers la page de détail du client -->
+
+                        <a href="?action=utilisateur.edit&id=<?= $user->getId() ?>" class="btn btn-warning btn-sm mb-1">
+                            Modifier
+                        </a>
+                        <!-- Redirige vers le formulaire d’édition -->
+
+                        <a href="?action=utilisateur.delete&id=<?= $user->getId() ?>"
+                           class="btn btn-danger btn-sm mb-1 btn-delete-client"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                           Supprimer
+                        </a>
+                        <!-- Supprime le client après confirmation. Le JavaScript peut bloquer cette action si l’utilisateur a des comptes -->
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <div class="text-end mt-3">
+        <!-- Bouton pour créer un nouvel utilisateur -->
+        <a href="?action=utilisateur.create" class="btn btn-primary">Ajouter un utilisateur</a>
+    </div>
 </div>
 
-<?php require_once __DIR__ . '/Template/Footer.php'; ?>
+<script src="Js/client-list.js"></script>
+<!-- J’inclus le script JavaScript qui gère la logique de confirmation avant suppression -->
+
+<?php require_once __DIR__ . '/Template/Footer.php'; ?> 
+<!-- J’inclus le pied de page de mon site -->
