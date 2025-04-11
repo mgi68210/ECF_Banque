@@ -5,7 +5,7 @@
 <!-- J'inclus la feuille de style spécifique à cette page -->
 
 <div class="client-list-container">
-    <h2 class="client-list-title">👥 Liste des utilisateurs</h2>
+    <h2 class="client-list-title">👥 Liste des clients</h2>
     <!-- Titre principal de la page -->
 
     <table class="client-table">
@@ -68,9 +68,9 @@
                         <!-- Redirige vers le formulaire d’édition -->
 
                         <a href="?action=utilisateur.delete&id=<?= $user->getId() ?>"
-                           class="btn btn-danger btn-sm mb-1 btn-delete-client"
-                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
-                           Supprimer
+                        class="btn btn-danger btn-sm mb-1"
+                        onclick="return confirm('⚠️ Attention : La suppression de ce client entraînera également la suppression de tous ses comptes et contrats associés. Voulez-vous vraiment continuer ?');">
+                        ❌ Supprimer
                         </a>
                         <!-- Supprime le client après confirmation. Le JavaScript peut bloquer cette action si l’utilisateur a des comptes -->
                     </td>
@@ -81,7 +81,7 @@
 
     <div class="text-end mt-3">
         <!-- Bouton pour créer un nouvel utilisateur -->
-        <a href="?action=utilisateur.create" class="btn btn-primary">Ajouter un utilisateur</a>
+        <a href="?action=utilisateur.create" class="btn btn-primary">➕ Ajouter un client</a>
     </div>
 </div>
 

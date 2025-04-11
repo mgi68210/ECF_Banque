@@ -1,32 +1,45 @@
+// Quand toute la page HTML est chargée...
 document.addEventListener("DOMContentLoaded", function () {
-    // Je récupère tous les boutons avec la classe .btn-delete-client
+
+    // Je sélectionne tous les boutons de suppression des clients
     const boutonsSuppression = document.querySelectorAll(".btn-delete-client");
 
-    // Je parcours chaque bouton pour lui ajouter un écouteur de clic
+    // Je parcours chacun de ces boutons
     boutonsSuppression.forEach(function (bouton) {
+
+        // J'écoute l'événement "clic" sur ce bouton
         bouton.addEventListener("click", function (event) {
-            // Je remonte jusqu'à la ligne <tr> du tableau où se trouve ce bouton
+
+            // Je remonte dans le DOM pour trouver la ligne <tr> contenant le bouton cliqué
             const ligneClient = bouton.closest("tr");
 
-            // Je récupère l'ID du client dans les attributs personnalisés de la ligne
+            // Je récupère l'ID du client depuis l'attribut personnalisé data-id
             const idClient = ligneClient.dataset.id;
 
-            // Je vérifie s'il a au moins un compte ou contrat (hasComptes vaut "1")
+            // Je regarde aussi si ce client possède des comptes/contrats (data-has-comptes = "1")
             const aDesComptes = ligneClient.dataset.hasComptes === "1";
 
-            // Si le client a un compte ou contrat, je bloque la suppression
+            // Je prépare un message d’avertissement à afficher à l'utilisateur
+            let message = "⚠️ Attention : La suppression de ce client entraînera également la suppression de tous ses comptes et contrats associés.";
+
+            // Si le client a effectivement des comptes, j'ajoute une alerte plus explicite
             if (aDesComptes) {
-                alert("❌ Ce client ne peut pas être supprimé car il possède au moins un compte ou contrat.");
-                event.preventDefault(); // J'empêche l'action du lien (la suppression)
-            } else {
-                // Sinon, je demande une confirmation à l'utilisateur
-                const confirmation = confirm("⚠️ Supprimer le client ID " + idClient + " ?");
-                
-                // Si l'utilisateur clique sur "Annuler", je bloque aussi la suppression
-                if (!confirmation) {
-                    event.preventDefault();
-                }
+                message += "\nCe client possède des comptes ou des contrats qui seront supprimés définitivement.";
             }
+
+            // J’ajoute une question de confirmation à la fin du message
+            message += "\n\nÊtes-vous sûr de vouloir continuer ?";
+
+            // J'affiche le message avec une boîte de dialogue de confirmation
+            const confirmation = confirm(message);
+
+            // Si l'utilisateur clique sur "Annuler", j'empêche le lien de fonctionner
+            if (!confirmation) {
+                event.preventDefault(); // Empêche la redirection vers la suppression
+            }
+
+            // Sinon (si l'utilisateur confirme), la redirection se fera normalement
+            // La suppression sera gérée par PHP côté serveur
         });
     });
 });
