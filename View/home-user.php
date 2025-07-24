@@ -89,7 +89,7 @@ if (!isset($user)) {
 
     <!-- Lien de déconnexion -->
     <div class="mt-4 text-center">
-        <a href="?action=auth.logout" class="btn btn-danger">🚪 Se déconnecter</a>
+        <a href="?action=auth.logout" class="btn btn-danger"> Se déconnecter</a>
     </div>
 </div>
 
