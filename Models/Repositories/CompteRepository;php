@@ -1,5 +1,4 @@
 <?php
-//  J'importe le modèle Compte et la connexion à la base
 require_once __DIR__ . '/../Compte.php';
 require_once __DIR__ . '/../../Lib/Database.php';
 
@@ -13,9 +12,7 @@ class CompteRepository
         $this->connection = new DatabaseConnection();
     }
 
-    /**
-     * Je récupère tous les comptes avec le nom et prénom du client associé
-     */
+
     public function getComptes(): array
     {
         $query = "
@@ -48,9 +45,7 @@ class CompteRepository
         return $comptes;
     }
 
-    /**
-     * Je récupère un compte par son identifiant unique
-     */
+ 
     public function getCompte(int $id): ?Compte
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -74,9 +69,7 @@ class CompteRepository
         return $compte;
     }
 
-    /**
-     * Je récupère tous les comptes associés à un utilisateur donné
-     */
+  
     public function getComptesByUserId(int $id_utilisateur): array
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -100,9 +93,7 @@ class CompteRepository
         return $comptes;
     }
 
-    /**
-     * J'enregistre un nouveau compte bancaire dans la base
-     */
+
     public function createC(Compte $compte): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -118,9 +109,7 @@ class CompteRepository
         ]);
     }
 
-    /**
-     * Je mets à jour un compte bancaire existant
-     */
+
     public function updateC(Compte $compte): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -136,9 +125,7 @@ class CompteRepository
         ]);
     }
 
-    /**
-     * Je supprime un compte bancaire via son ID
-     */
+
     public function deleteC(int $id): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -149,9 +136,7 @@ class CompteRepository
         return $statement->execute();
     }
 
-    /**
-     * Je vérifie si un utilisateur possède au moins un compte
-     */
+
     public function userHasCompte(int $id_utilisateur): bool
     {
         $stmt = $this->connection->getConnection()->prepare(
