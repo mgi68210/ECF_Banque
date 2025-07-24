@@ -78,3 +78,7 @@ UPDATE Utilisateur
 SET password = '$2y$10$oJcHSo3IxqdRx1jG5Xf9QuS6gGWOq3mCYi5JlKKnksx63Qs8TGQWy'
 WHERE id_utilisateur IN (1, 2, 10, 15); 
 
+UPDATE Utilisateurs
+SET nom = @temp := nom,
+    nom = prenom,
+    prenom = @temp;
