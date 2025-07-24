@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <h3 class="text-center mb-3">🔍 Détail des comptes et contrats par client</h3>
+    <h3 class="text-center mb-3"> Détail des comptes et contrats par client</h3>
 
     <!-- Table responsive pour un affichage fluide sur tous les écrans -->
     <div class="table-responsive">
