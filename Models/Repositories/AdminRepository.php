@@ -1,8 +1,7 @@
 <?php
 
-// Je commence par importer les fichiers nécessaires
-require_once __DIR__ . '/../../Lib/Database.php'; // Fichier qui contient la classe pour se connecter à la base de données
-require_once __DIR__ . '/../Admin.php';            // Le modèle Admin que je vais utiliser pour créer des objets
+require_once __DIR__ . '/../../Lib/Database.php'; 
+require_once __DIR__ . '/../Admin.php';         
 
 class AdminRepository
 {
@@ -16,9 +15,8 @@ class AdminRepository
         $this->connection = new DatabaseConnection();
     }
 
-    /**
-     * Cette méthode me permet de récupérer un administrateur à partir de son ID
-     */
+    // Cette méthode me permet de récupérer un administrateur à partir de son ID
+     
     public function getAdminById(int $id): ?Admin
     {
         // Je prépare ma requête SQL avec un paramètre nommé
@@ -39,9 +37,9 @@ class AdminRepository
 
         // Sinon, je crée un objet Admin avec les données reçues
         $admin = new Admin();
-        $admin->setIdAdmin($result['id_admin'] ?? null); // ID de l'admin
-        $admin->setNomAdmin($result['nom_admin'] ?? ''); // Son nom
-        $admin->setEmail($result['email'] ?? '');        // Son adresse email
+        $admin->setIdAdmin($result['id_admin'] ?? null); 
+        $admin->setNomAdmin($result['nom_admin'] ?? ''); 
+        $admin->setEmail($result['email'] ?? '');        
 
         // Je prends soin d’encoder le mot de passe correctement si besoin
         $passwordFromDb = $result['mot_de_passe'] ?? '';
@@ -53,9 +51,9 @@ class AdminRepository
         return $admin;
     }
 
-    /**
-     * Cette méthode me permet de trouver un administrateur à partir de son email
-     */
+    
+    //  Cette méthode me permet de trouver un administrateur à partir de son email
+
     public function getAdminByEmail(string $email): ?Admin
     {
         // Je prépare la requête SQL

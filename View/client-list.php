@@ -1,18 +1,13 @@
 <?php require_once __DIR__ . '/Template/Header.php'; ?> 
-<!-- J'inclus l'en-tête de la page (menu, styles globaux, etc.) -->
 
 <link rel="stylesheet" href="View/css/client-list.css"> 
-<!-- J'inclus la feuille de style spécifique à cette page -->
 
 <div class="client-list-container">
-    <h2 class="client-list-title">👥 Liste des clients</h2>
-    <!-- Titre principal de la page -->
+    <h2 class="client-list-title"> Liste des clients</h2>
 
     <table class="client-table">
-        <!-- Je crée un tableau HTML pour afficher les utilisateurs -->
 
         <thead>
-            <!-- En-tête du tableau -->
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
@@ -81,7 +76,7 @@
 
     <div class="text-end mt-3">
         <!-- Bouton pour créer un nouvel utilisateur -->
-        <a href="?action=utilisateur.create" class="btn btn-primary">➕ Ajouter un client</a>
+        <a href="?action=utilisateur.create" class="btn btn-primary"> Ajouter un client</a>
     </div>
 </div>
 
@@ -89,4 +84,3 @@
 <!-- J’inclus le script JavaScript qui gère la logique de confirmation avant suppression -->
 
 <?php require_once __DIR__ . '/Template/Footer.php'; ?> 
-<!-- J’inclus le pied de page de mon site -->

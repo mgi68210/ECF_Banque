@@ -32,7 +32,6 @@
     <p>Aucun compte trouvé pour cet utilisateur.</p>
 <?php endif; ?>
 
-<!-- Actions liées au compte -->
 <div class="mt-4">
     <!-- Bouton pour modifier ce compte -->
     <a href="?action=compte.edit&id=<?= $compte->getIdCompte() ?>" class="btn btn-warning">✏️ Modifier</a>

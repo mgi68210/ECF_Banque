@@ -9,22 +9,19 @@ if (!isset($user)) {
 
 <?php require_once __DIR__ . '/Template/Header.php'; ?>
 
-<!-- Je relie la feuille CSS spécifique à cette page -->
 <link rel="stylesheet" href="View/css/home-user.css">
 
-<!-- Bloc principal de l'espace utilisateur -->
 <div class="user-home animate-zoom">
 
     <!-- Image illustrative du profil -->
     <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="User Home" style="width: 90px; margin-bottom: 20px;">
 
     <!-- Message de bienvenue personnalisé -->
-    <h2>👋 Bienvenue <?= htmlspecialchars($user->getPrenom()) ?> <?= htmlspecialchars($user->getNom()) ?></h2>
+    <h2> Bienvenue <?= htmlspecialchars($user->getPrenom()) ?> <?= htmlspecialchars($user->getNom()) ?></h2>
     <p>Voici les informations de votre espace personnel.</p>
 
-    <!-- Section des informations personnelles -->
     <div class="user-info">
-        <h4>📇 Informations personnelles</h4>
+        <h4> Informations personnelles</h4>
         <ul>
             <li><strong>Nom :</strong> <?= htmlspecialchars($user->getNom()) ?></li>
             <li><strong>Prénom :</strong> <?= htmlspecialchars($user->getPrenom()) ?></li>
@@ -34,9 +31,8 @@ if (!isset($user)) {
         </ul>
     </div>
 
-    <!-- Section des comptes bancaires -->
     <div class="user-accounts mt-5">
-        <h4>💰 Comptes bancaires</h4>
+        <h4> Comptes bancaires</h4>
 
         <?php if (!empty($comptes)): ?>
             <table class="table table-bordered">
@@ -63,9 +59,8 @@ if (!isset($user)) {
         <?php endif; ?>
     </div>
 
-    <!-- Section des contrats -->
     <div class="user-contracts mt-5">
-        <h4>📄 Contrats souscrits</h4>
+        <h4> Contrats souscrits</h4>
 
         <?php if (!empty($contrats)): ?>
             <table class="table table-bordered">

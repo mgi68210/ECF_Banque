@@ -1,6 +1,5 @@
 <?php
 
-// J'importe les classes nécessaires au fonctionnement du controller
 require_once __DIR__ . '/../Models/Repositories/ContratRepository.php';
 require_once __DIR__ . '/../Models/Repositories/UserRepository.php';
 require_once __DIR__ . '/../Models/Contrat.php';

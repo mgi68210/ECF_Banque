@@ -1,6 +1,5 @@
 <?php
 
-//  Importation des dépendances nécessaires (modèles et outils)
 require_once __DIR__ . '/../Models/Repositories/CompteRepository;php';
 require_once __DIR__ . '/../Models/Repositories/UserRepository.php';
 require_once __DIR__ . '/../Models/Compte.php';

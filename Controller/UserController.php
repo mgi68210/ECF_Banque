@@ -1,6 +1,5 @@
 <?php
 
-//  J'importe les classes nécessaires
 require_once __DIR__ . '/../Models/Repositories/CompteRepository;php';
 require_once __DIR__ . '/../Models/Repositories/UserRepository.php';
 require_once __DIR__ . '/../Models/User.php';

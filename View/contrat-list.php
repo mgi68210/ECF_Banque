@@ -1,10 +1,8 @@
 <?php require_once __DIR__ . '/Template/Header.php'; ?>
 <!-- J'inclus le header commun à toutes les pages -->
 
-<!-- Titre centré pour présenter la page -->
-<h2 class="mb-4 text-center">📄 Liste des contrats</h2>
+<h2 class="mb-4 text-center"> Liste des contrats</h2>
 
-<!-- Début du tableau affichant tous les contrats -->
 <table class="table table-bordered table-hover text-center">
     <thead class="table-dark">
         <tr>
@@ -29,7 +27,6 @@
                     <td><?= htmlspecialchars($contrat->getDuree()); ?></td>
                     <td><?= htmlspecialchars($contrat->client_nom . ' ' . $contrat->client_prenom); ?></td>
 
-                    <!-- Actions disponibles pour chaque contrat -->
                     <td>
                         <!-- Voir le détail -->
                         <a href="?action=contrat.show&id=<?= $contrat->getIdContrat(); ?>" class="btn btn-info btn-sm mb-1">
@@ -51,7 +48,7 @@
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <!-- Si aucun contrat enregistré, j'affiche un message -->
+
             <tr>
                 <td colspan="6" class="text-muted">Aucun contrat enregistré.</td>
             </tr>
@@ -61,8 +58,7 @@
 
 <!-- Bouton pour ajouter un nouveau contrat -->
 <div class="d-flex justify-content-end mb-3">
-    <a href="?action=contrat.create" class="btn btn-success">➕ Ajouter un contrat</a>
+    <a href="?action=contrat.create" class="btn btn-success"> Ajouter un contrat</a>
 </div>
 
-<!-- Inclusion du footer -->
 <?php require_once __DIR__ . '/Template/Footer.php'; ?>

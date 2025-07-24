@@ -1,6 +1,5 @@
 <?php
 
-// J'inclus tous les fichiers dont j'ai besoin pour que ce contrôleur fonctionne correctement
 require_once __DIR__ . '/../Models/Repositories/UserRepository.php';     // Pour accéder aux utilisateurs
 require_once __DIR__ . '/../Models/User.php';                            // Modèle représentant un utilisateur
 require_once __DIR__ . '/../Models/Repositories/AdminRepository.php';    // Pour accéder aux administrateurs

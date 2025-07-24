@@ -10,7 +10,7 @@
     <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" alt="403 Error" style="width: 100px; margin-bottom: 20px;">
     <!-- Image représentative de l'erreur 403 pour un affichage plus explicite -->
 
-    <h1>⛔ Erreur 403</h1>
+    <h1> Erreur 403</h1>
     <!-- Titre principal indiquant qu'il s'agit d'une erreur d'accès interdit -->
 
     <p>Vous n'êtes pas inscrit et vous n'avez pas les droits nécessaires pour accéder à cette page.</p>

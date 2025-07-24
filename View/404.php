@@ -10,7 +10,7 @@
     <img src="https://cdn-icons-png.flaticon.com/512/580/580185.png" alt="404 Error" style="width: 100px; margin-bottom: 20px;">
     <!-- Image illustrative pour signaler l’erreur 404 -->
 
-    <h1>🚫 Erreur 404</h1>
+    <h1> Erreur 404</h1>
     <!-- Titre de la page indiquant clairement qu’il s’agit d’une erreur 404 (page non trouvée) -->
 
     <p>La page que vous recherchez est introuvable.</p>
